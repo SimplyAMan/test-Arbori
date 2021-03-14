@@ -1,0 +1,34 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.31'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testImplementation group: 'junit', name: 'junit', version: '4.12'
+/*<!-- SQL Developer dependencies not available in public Maven repositories -->
+<dependency>
+<groupId>oracle.dbtools.</groupId>
+    <artifactId>dbtools-common</artifactId>
+        <version>20.2.0</version>
+    <scope>system</scope>
+        <systemPath>${sqldev.basedir}/sqldeveloper/lib/dbtools-common.jar</systemPath>
+</dependency>*/
+//    compile group: 'oracle.dbtools', name: 'dbtools-common', version: '20.2.0'
+    implementation fileTree(include: ['*.jar'], dir: 'local-repo')
+    implementation('org.jetbrains.kotlin:kotlin-stdlib:1.3.31')
+    testImplementation(
+            'org.assertj:assertj-core:3.12.2',
+            'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    )
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.6.2')
+}
+
+test {
+    useJUnitPlatform()
+}
